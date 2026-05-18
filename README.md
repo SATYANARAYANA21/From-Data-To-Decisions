@@ -47,3 +47,36 @@ More improvements coming.
 ## Builder Notes
 
 This is only the beginning.
+
+---
+
+## Repository Structure
+
+```bash
+From-Data-To-Decisions/
+│
+├── index.html
+├── README.md
+│
+├── internship-deliverables/
+│   ├── task-1-eda-analysis.pdf
+│   ├── task-2-model-framework.pdf
+│   ├── task-3-business-recommendation.pdf
+│
+├── presentations/
+│   └── task-4-executive-pitch-deck.pptx
+│
+└── achievements/
+    └── tcs-forage-certificate.pdf
+```
+
+---
+
+## Included Assets
+
+📄 Research Deliverables  
+📊 Executive Pitch Deck  
+🏆 Completion Certificate  
+💡 Interactive Project Experience  
+
+---
