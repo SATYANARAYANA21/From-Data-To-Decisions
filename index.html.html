@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tata iQ · AI-Powered Financial Analytics — Complete Learning Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #111118;
+  --bg3: #18181f;
+  --bg4: #1e1e28;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --text: #e8e6f0;
+  --muted: #8b8899;
+  --dim: #5a5868;
+  --accent: #7c6af5;
+  --accent2: #a78bfa;
+  --teal: #2dd4bf;
+  --coral: #f87171;
+  --amber: #fbbf24;
+  --green: #4ade80;
+  --pink: #f472b6;
+  --blue: #60a5fa;
+  --font-head: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --r: 12px;
+  --r2: 20px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* ── NOISE GRAIN OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 60px;
+}
+.nav-brand {
+  font-family: var(--font-head);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent2);
+  text-transform: uppercase;
+}
+.nav-links {
+  display: flex;
+  gap: 0;
+  list-style: none;
+}
+.nav-links a {
+  display: block;
+  padding: 0.4rem 0.8rem;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.nav-links a:hover { color: var(--text); background: var(--bg3); }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 4rem;
+  text-align: center;
+  overflow: hidden;
+}
+.hero-glow {
+  position: absolute;
+  width: 800px; height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,106,245,0.15) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -55%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(124,106,245,0.1);
+  border: 1px solid rgba(124,106,245,0.25);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent2);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+.hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.hero h1 {
+  font-family: var(--font-head);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  max-width: 900px;
+}
+.hero h1 .line1 { display: block; color: var(--text); }
+.hero h1 .line2 { display: block; background: linear-gradient(135deg, var(--accent2) 0%, var(--teal) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+.hero-meta {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.meta-num {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent2), var(--teal));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.meta-label { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.1em; }
+.hero-scroll { margin-top: 3rem; color: var(--dim); font-size: 12px; animation: bounce 2s infinite; }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+/* ── SECTIONS ── */
+.section {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+.section-header {
+  margin-bottom: 3rem;
+}
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 1rem;
+}
+.section-tag::before { content: ''; display: block; width: 20px; height: 1px; background: var(--accent2); }
+.section h2 {
+  font-family: var(--font-head);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+.section-desc { color: var(--muted); max-width: 600px; font-size: 1rem; }
+
+/* ── DIVIDER ── */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border2), transparent);
+}
+
+/* ── TASK CARDS ── */
+.tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 4rem;
+}
+.task-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  padding: 1.75rem;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+  text-decoration: none;
+  display: block;
+}
+.task-card:hover { border-color: var(--border2); transform: translateY(-2px); background: var(--bg3); }
+.task-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--dim);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.08em;
+}
+.task-card h3 { font-family: var(--font-head); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+.task-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.task-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 8px; }
+
+/* ── CONCEPT BLOCKS ── */
+.concept-block {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+.concept-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.concept-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.concept-header h3 { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; }
+.concept-header span { font-size: 12px; color: var(--muted); display: block; margin-top: 2px; }
+.concept-body { padding: 1.75rem 2rem; }
+.concept-body p { color: var(--muted); margin-bottom: 1rem; font-size: 0.95rem; }
+.concept-body p:last-child { margin-bottom: 0; }
+
+/* ── INTERACTIVE TABS ── */
+.tab-group { margin-bottom: 2.5rem; }
+.tab-nav {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tab-nav::-webkit-scrollbar { display: none; }
+.tab-btn {
+  padding: 0.6rem 1.2rem;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+}
+.tab-btn.active { color: var(--text); border-color: var(--accent2); }
+.tab-btn:hover:not(.active) { color: var(--text); }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+/* ── FLOW DIAGRAM ── */
+.flow-diagram {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 2rem;
+  overflow: auto;
+}
+
+/* ── FEATURE GRID ── */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.feature-item {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.25rem;
+}
+.feature-item .fi-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 0.5rem;
+}
+.feature-item .fi-val {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.feature-item p { font-size: 12px; color: var(--muted); margin-top: 0.35rem; }
+
+/* ── PILL TAGS ── */
+.pill-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem; }
+.pill {
+  display: inline-flex; align-items: center;
+  padding: 5px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid;
+}
+.pill-purple { background: rgba(124,106,245,0.1); border-color: rgba(124,106,245,0.3); color: var(--accent2); }
+.pill-teal   { background: rgba(45,212,191,0.08); border-color: rgba(45,212,191,0.25); color: var(--teal); }
+.pill-coral  { background: rgba(248,113,113,0.08); border-color: rgba(248,113,113,0.25); color: var(--coral); }
+.pill-amber  { background: rgba(251,191,36,0.08); border-color: rgba(251,191,36,0.25); color: var(--amber); }
+.pill-green  { background: rgba(74,222,128,0.08); border-color: rgba(74,222,128,0.25); color: var(--green); }
+.pill-blue   { background: rgba(96,165,250,0.08); border-color: rgba(96,165,250,0.25); color: var(--blue); }
+
+/* ── COMPARISON TABLE ── */
+.compare-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.compare-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.5rem;
+  transition: border-color 0.2s;
+}
+.compare-card.highlight { border-color: var(--accent); }
+.compare-card .cc-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--dim); margin-bottom: 0.5rem;
+}
+.compare-card h4 { font-family: var(--font-head); font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem; }
+.compare-list { list-style: none; }
+.compare-list li {
+  display: flex; gap: 8px; align-items: flex-start;
+  font-size: 13px; color: var(--muted); margin-bottom: 6px;
+}
+.compare-list li::before { content: '→'; color: var(--accent2); flex-shrink: 0; }
+.cc-badge {
+  font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 4px;
+  background: rgba(124,106,245,0.15); color: var(--accent2);
+  display: inline-block; margin-bottom: 0.5rem;
+}
+
+/* ── METRICS ROW ── */
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.metric-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.25rem;
+  text-align: center;
+}
+.metric-card .mk-val {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 800;
+  display: block;
+  margin-bottom: 4px;
+}
+.metric-card .mk-label { font-size: 12px; color: var(--muted); }
+
+/* ── PIPELINE VISUAL ── */
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.pipe-step {
+  flex: 1;
+  min-width: 120px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.25rem 1rem;
+  text-align: center;
+  position: relative;
+}
+.pipe-step:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--dim);
+  font-size: 16px;
+  z-index: 2;
+  background: var(--bg);
+  padding: 0 2px;
+}
+.pipe-step + .pipe-step { margin-left: 12px; }
+.pipe-step .ps-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--dim);
+  margin-bottom: 6px;
+}
+.pipe-step .ps-icon { font-size: 20px; margin-bottom: 6px; }
+.pipe-step .ps-label { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.pipe-step .ps-desc { font-size: 11px; color: var(--muted); }
+
+/* ── INTERACTIVE QUIZ ── */
+.quiz-block {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  padding: 2rem;
+  margin-top: 1.5rem;
+}
+.quiz-q { font-weight: 600; margin-bottom: 1rem; font-size: 0.95rem; }
+.quiz-options { display: grid; gap: 8px; }
+.quiz-opt {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--muted);
+  transition: all 0.15s;
+  text-align: left;
+  width: 100%;
+}
+.quiz-opt:hover { border-color: var(--border2); color: var(--text); }
+.quiz-opt.correct { background: rgba(74,222,128,0.1); border-color: rgba(74,222,128,0.4); color: var(--green); }
+.quiz-opt.wrong   { background: rgba(248,113,113,0.1); border-color: rgba(248,113,113,0.3); color: var(--coral); }
+.quiz-feedback { margin-top: 1rem; font-size: 13px; color: var(--muted); display: none; padding: 0.75rem; background: var(--bg4); border-radius: var(--r); }
+.quiz-feedback.show { display: block; }
+.quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem; }
+.quiz-prog { font-family: var(--font-mono); font-size: 12px; color: var(--dim); }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: 1px solid;
+  text-decoration: none;
+}
+.btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn-primary:hover { background: #6c5cf0; border-color: #6c5cf0; }
+.btn-ghost { background: transparent; border-color: var(--border2); color: var(--text); }
+.btn-ghost:hover { background: var(--bg3); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ── CALLOUT BOX ── */
+.callout {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--r);
+  margin: 1.5rem 0;
+  border: 1px solid;
+}
+.callout-info    { background: rgba(96,165,250,0.06); border-color: rgba(96,165,250,0.2); }
+.callout-warning { background: rgba(251,191,36,0.06); border-color: rgba(251,191,36,0.2); }
+.callout-success { background: rgba(74,222,128,0.06); border-color: rgba(74,222,128,0.2); }
+.callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+.callout-body p { font-size: 13px; color: var(--muted); margin: 0; }
+.callout-body strong { color: var(--text); font-size: 14px; display: block; margin-bottom: 4px; }
+
+/* ── RISK FACTOR BAR ── */
+.risk-bar-item { margin-bottom: 1rem; }
+.risk-bar-header { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.risk-bar-label { font-size: 13px; font-weight: 500; }
+.risk-bar-pct { font-size: 13px; font-family: var(--font-mono); color: var(--muted); }
+.risk-bar-track { height: 6px; background: var(--bg4); border-radius: 3px; overflow: hidden; }
+.risk-bar-fill { height: 100%; border-radius: 3px; transition: width 1s cubic-bezier(0.4,0,0.2,1); }
+
+/* ── SYSTEM ARCHITECTURE ── */
+.arch-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.arch-layer {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.5rem;
+}
+.arch-layer h4 {
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.arch-dot { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
+.arch-layer ul { list-style: none; }
+.arch-layer li {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.arch-layer li:last-child { border-bottom: none; }
+.arch-layer li::before { content: '·'; color: var(--dim); font-size: 20px; line-height: 1; }
+
+/* ── AGENTIC FLOW ── */
+.agentic-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 1.5rem 0;
+}
+.af-step {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.af-step:last-child { border-bottom: none; }
+.af-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.af-content { flex: 1; }
+.af-content h4 { font-family: var(--font-head); font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
+.af-content p { font-size: 13px; color: var(--muted); }
+
+/* ── ETHICS TABLE ── */
+.ethics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  margin-top: 1.5rem;
+}
+.eth-cell {
+  background: var(--bg3);
+  padding: 1.25rem;
+}
+.eth-cell .ec-risk { font-size: 13px; font-weight: 500; margin-bottom: 0.5rem; color: var(--coral); }
+.eth-cell .ec-fix  { font-size: 13px; font-weight: 500; margin-bottom: 0.5rem; color: var(--green); }
+.eth-cell p { font-size: 12px; color: var(--muted); }
+.eth-header { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 2rem;
+  text-align: center;
+  color: var(--dim);
+  font-size: 13px;
+}
+footer strong { color: var(--muted); }
+footer a { color: var(--accent2); text-decoration: none; }
+.footer-inner { max-width: 600px; margin: 0 auto; }
+
+/* ── ANIMATIONS ── */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── PROGRESS INDICATOR ── */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--teal));
+  z-index: 200;
+  transition: width 0.1s;
+}
+
+/* ── TOOLTIP ── */
+[data-tip] { position: relative; cursor: help; border-bottom: 1px dashed var(--dim); }
+[data-tip]:hover::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg4);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--text);
+  white-space: nowrap;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* ── INTERACTIVE MISSING DATA ── */
+#missing-vis { display: grid; grid-template-columns: repeat(20, 1fr); gap: 3px; margin: 1rem 0; }
+.mv-cell {
+  aspect-ratio: 1;
+  border-radius: 2px;
+  background: var(--bg4);
+  transition: all 0.3s;
+}
+.mv-cell.filled { background: var(--accent); opacity: 0.8; }
+.mv-cell.missing { background: var(--coral); opacity: 0.6; }
+
+/* ── BIAS METER ── */
+.bias-meter {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+.bm-track {
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--green), var(--amber), var(--coral));
+  position: relative;
+  margin: 1rem 0;
+}
+.bm-needle {
+  width: 3px;
+  height: 24px;
+  background: var(--text);
+  border-radius: 2px;
+  position: absolute;
+  top: -6px;
+  transition: left 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+.bm-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--dim); }
+
+/* ── MODEL COMPARISON INTERACTIVE ── */
+.model-sel {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.model-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg3);
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.model-btn.active { border-color: var(--accent); color: var(--accent2); background: rgba(124,106,245,0.08); }
+.model-detail {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.5rem;
+  display: none;
+}
+.model-detail.show { display: block; }
+
+/* ── REGULATION CARDS ── */
+.reg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+.reg-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.25rem;
+}
+.reg-acronym {
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.reg-full { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--dim); margin-bottom: 0.5rem; }
+.reg-card p { font-size: 12px; color: var(--muted); }
+
+/* ── TIMELINE ── */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+  margin-top: 1.5rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, var(--accent), var(--teal), transparent);
+}
+.tl-item {
+  position: relative;
+  padding-bottom: 2rem;
+}
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -1.7rem;
+  top: 5px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent2);
+  border: 2px solid var(--bg);
+}
+.tl-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent2); margin-bottom: 4px; }
+.tl-item h4 { font-family: var(--font-head); font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+.tl-item p { font-size: 13px; color: var(--muted); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { display: none; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .arch-grid { grid-template-columns: 1fr; }
+  .ethics-grid { grid-template-columns: 1fr; }
+  .pipeline { flex-direction: column; }
+  .pipe-step:not(:last-child)::after { content: '↓'; right: unset; left: 50%; transform: translateX(-50%); bottom: -14px; top: unset; }
+  .pipe-step + .pipe-step { margin-left: 0; margin-top: 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progBar"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Tata iQ · Geldium Project</div>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#task1">Task 1 · EDA</a></li>
+    <li><a href="#task2">Task 2 · Modeling</a></li>
+    <li><a href="#task3">Task 3 · Business</a></li>
+    <li><a href="#task4">Task 4 · Agentic AI</a></li>
+    <li><a href="#ethics">Ethics</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge">Tata iQ Virtual Simulation · Forage</div>
+  <h1>
+    <span class="line1">AI-Powered Financial Analytics</span>
+    <span class="line2">Complete Learning Guide</span>
+  </h1>
+  <p class="hero-sub">
+    A deep-dive into every concept, technique, and framework from the Geldium Credit Card Delinquency Risk Assessment — explained visually and interactively.
+  </p>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-num">4</span><span class="meta-label">Tasks</span></div>
+    <div class="meta-item"><span class="meta-num">30+</span><span class="meta-label">Concepts</span></div>
+    <div class="meta-item"><span class="meta-num">3</span><span class="meta-label">AI Models</span></div>
+    <div class="meta-item"><span class="meta-num">4</span><span class="meta-label">Regulations</span></div>
+  </div>
+  <div class="hero-scroll">↓ scroll to explore</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- OVERVIEW -->
+<section class="section" id="overview">
+  <div class="section-header fade-in">
+    <div class="section-tag">Project Context</div>
+    <h2>What Was This Simulation About?</h2>
+    <p class="section-desc">Geldium, a financial services company, faced rising credit card delinquency rates. The mission: build an AI-powered system to predict and prevent missed payments.</p>
+  </div>
+
+  <div class="tasks-grid fade-in">
+    <a class="task-card" href="#task1">
+      <div class="task-num">TASK 01</div>
+      <h3><span class="task-dot" style="background:var(--teal)"></span>Exploratory Data Analysis</h3>
+      <p>Investigated Geldium's customer dataset, identified missing values, anomalies, and early risk signals before building any model.</p>
+      <div class="pill-group" style="margin-top:0.75rem"><span class="pill pill-teal">EDA</span><span class="pill pill-blue">Data Quality</span><span class="pill pill-purple">Imputation</span></div>
+    </a>
+    <a class="task-card" href="#task2">
+      <div class="task-num">TASK 02</div>
+      <h3><span class="task-dot" style="background:var(--accent2)"></span>Predictive Modeling Plan</h3>
+      <p>Designed a logistic regression framework with decision tree support to classify customers as delinquency risk or safe.</p>
+      <div class="pill-group" style="margin-top:0.75rem"><span class="pill pill-purple">Logistic Regression</span><span class="pill pill-amber">Decision Trees</span></div>
+    </a>
+    <a class="task-card" href="#task3">
+      <div class="task-num">TASK 03</div>
+      <h3><span class="task-dot" style="background:var(--amber)"></span>Business Recommendation</h3>
+      <p>Translated AI model insights into SMART business recommendations for Geldium's Head of Collections.</p>
+      <div class="pill-group" style="margin-top:0.75rem"><span class="pill pill-amber">SMART Goals</span><span class="pill pill-green">Stakeholder Comms</span></div>
+    </a>
+    <a class="task-card" href="#task4">
+      <div class="task-num">TASK 04</div>
+      <h3><span class="task-dot" style="background:var(--coral)"></span>Agentic AI System</h3>
+      <p>Designed an autonomous AI-powered collections system with feedback loops, guardrails, and human oversight.</p>
+      <div class="pill-group" style="margin-top:0.75rem"><span class="pill pill-coral">Agentic AI</span><span class="pill pill-blue">Automation</span></div>
+    </a>
+  </div>
+
+  <!-- AI vs ML vs GenAI -->
+  <div class="concept-block fade-in">
+    <div class="concept-header">
+      <div class="concept-icon" style="background:rgba(124,106,245,0.15)">🧠</div>
+      <div>
+        <h3>AI vs Machine Learning vs Generative AI</h3>
+        <span>The three layers of intelligence used in this project</span>
+      </div>
+    </div>
+    <div class="concept-body">
+      <div class="compare-grid" style="margin-top:0">
+        <div class="compare-card">
+          <div class="cc-label">Broadest</div>
+          <h4>Artificial Intelligence</h4>
+          <ul class="compare-list">
+            <li>Systems performing human-like tasks</li>
+            <li>Decision-making, pattern recognition</li>
+            <li>Risk assessment automation</li>
+          </ul>
+          <p style="font-size:12px;color:var(--muted);margin-top:0.75rem">Example: A system that decides whether to contact a customer about a missed payment.</p>
+        </div>
+        <div class="compare-card highlight">
+          <div class="cc-badge">Used in this project</div>
+          <div class="cc-label">Subset of AI</div>
+          <h4>Machine Learning</h4>
+          <ul class="compare-list">
+            <li>Learns patterns from historical data</li>
+            <li>Makes predictions on new data</li>
+            <li>Improves with more examples</li>
+          </ul>
+          <p style="font-size:12px;color:var(--muted);margin-top:0.75rem">Example: Model learns "3+ missed payments → high risk" from past customer data.</p>
+        </div>
+        <div class="compare-card">
+          <div class="cc-label">Generative</div>
+          <h4>Generative AI</h4>
+          <ul class="compare-list">
+            <li>Creates text, summaries, code</li>
+            <li>Assists analysts with EDA</li>
+            <li>Explains predictions in plain English</li>
+          </ul>
+          <p style="font-size:12px;color:var(--muted);margin-top:0.75rem">Example: ChatGPT helping detect missing values and suggest imputation strategies.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TASK 1: EDA -->
+<section class="section" id="task1">
+  <div class="section-header fade-in">
+    <div class="section-tag">Task 01</div>
+    <h2>Exploratory Data Analysis (EDA)</h2>
+    <p class="section-desc">Before any model is built, you must understand your data deeply. EDA is the detective work of data science.</p>
+  </div>
+
+  <!-- What is EDA -->
+  <div class="concept-block fade-in">
+    <div class="concept-header">
+      <div class="concept-icon" style="background:rgba(45,212,191,0.15)">🔍</div>
+      <div>
+        <h3>What is EDA and Why Does It Matter?</h3>
+        <span>The first step before any predictive model — garbage in, garbage out</span>
+      </div>
+    </div>
+    <div class="concept-body">
+      <p>EDA is like a doctor's full examination before prescribing medicine. You wouldn't prescribe treatment without first understanding the patient's condition. Similarly, you can't build a reliable AI model without first understanding your dataset.</p>
+      <div class="pipeline">
+        <div class="pipe-step">
+          <div class="ps-num">01</div>
+          <div class="ps-icon">📊</div>
+          <div class="ps-label">Understand Structure</div>
+          <div class="ps-desc">Rows, columns, data types</div>
+        </div>
+        <div class="pipe-step">
+          <div class="ps-num">02</div>
+          <div class="ps-icon">🚨</div>
+          <div class="ps-label">Find Missing Data</div>
+          <div class="ps-desc">Null values, blanks</div>
+        </div>
+        <div class="pipe-step">
+          <div class="ps-num">03</div>
+          <div class="ps-icon">📈</div>
+          <div class="ps-label">Detect Patterns</div>
+          <div class="ps-desc">Trends, correlations</div>
+        </div>
+        <div class="pipe-step">
+          <div class="ps-num">04</div>
+          <div class="ps-icon">⚡</div>
+          <div class="ps-label">Find Anomalies</div>
+          <div class="ps-desc">Outliers, duplicates</div>
+        </div>
+        <div class="pipe-step">
+          <div class="ps-num">05</div>
+          <div class="ps-icon">✅</div>
+          <div class="ps-label">Assess Quality</div>
+          <div class="ps-desc">Reliable for modeling?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Missing Data Interactive -->
+  <div class="concept-block fade-in">
+    <div class="concept-header">
+      <div class="concept-icon" style="background:rgba(248,113,113,0.15)">❓</div>
+      <div>
+        <h3>Missing Data — The Hidden Problem</h3>
+        <span>Interactive: visualize what missing data looks like in a real dataset</span>
+      </div>
+    </div>
+    <div class="concept-body">
+      <p>In Geldium's dataset, key fields like <strong style="color:var(--text)">income, payment history,</strong> and <strong style="color:var(--text)">credit utilization</strong> had missing values. This is extremely common in financial data. Below, each square represents a data record. <span style="color:var(--coral)">Red = missing</span>, <span style="color:var(--accent2)">purple = complete</span>.</p>
+
+      <div id="missing-vis"></div>
+      <div style="display:flex;gap:1rem;margin-bottom:1rem;font-size:13px;align-items:center;flex-wrap:wrap">
+        <button class="btn btn-ghost" onclick="setMissing(0.08)">Low missing (8%)</button>
+        <button class="btn btn-ghost" onclick="setMissing(0.22)">Medium missing (22%)</button>
+        <button class="btn btn-ghost" onclick="setMissing(0.45)">High missing (45%)</button>
+        <span id="missing-label" style="font-family:var(--font-mono);font-size:12px;color:var(--muted)"></span>
+      </div>
+
+      <div class="callout callout-warning">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-body">
+          <strong>Why this matters for AI</strong>
+          <p>If the model trains on incomplete data, its predictions will be skewed. A model might incorrectly classify a customer as "low risk" simply because their income data is missing — not because they're actually safe.</p>
+        </div>
+      </div>
+
+      <!-- Types of missing data -->
+      <h4 style="font-family:var(--font-head);font-size:1rem;font-weight:700;margin:1.5rem 0 1rem">Three Types of Missingness</h4>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="fi-label">MCAR</div>
+          <div class="fi-val">Missing Completely At Random</div>
+          <p>The missing-ness has no pattern. Like random data corruption. Safe to delete or impute.</p>
+        </div>
+        <div class="feature-item">
+          <div class="fi-label">MAR</div>
+          <div class="fi-val">Missing At Random</div>
+          <p>Missing-ness depends on another variable. Example: high-income customers less likely to report salary.</p>
+        </div>
+        <div class="feature-item">
+          <div class="fi-label">MNAR</div>
+          <div class="fi-val">Missing Not At Random</div>
+          <p>The fact it's missing IS the information. Customers in financial distress may hide their debt levels.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Imputation Methods -->
+  <div class="concept-block fade-in">
+    <div class="concept-header">
+      <div class="concept-icon" style="background:rgba(96,165,250,0.15)">🔧</div>
+      <div>
+        <h3>How to Fix Missing Data — Imputation Strategies</h3>
+        <span>What Geldium used and why each method was chosen</span>
+      </div>
+    </div>
+    <div class="concept-body">
+      <div class="tab-group">
+        <div class="tab-nav">
+          <button class="tab-btn active" onclick="switchTab(this,'imp')">Median Imputation</button>
+          <button class="tab-btn" onclick="switchTab(this,'imp')">Regression Imputation</button>
+          <button class="tab-btn" onclick="switchTab(this,'imp')">Synthetic Data</button>
+          <button class="tab-btn" onclick="switchTab(this,'imp')">Deletion</button>
+        </div>
+        <div class="tab-pane active">
+          <div class="callout callout-success">
+            <div class="callout-icon">✅</div>
+            <div class="callout-body">
+              <strong>Used for: Missing income values</strong>
+              <p>Replace missing values with the median (middle value) of the available data. Unlike mean, the median is resistant to extreme outliers — perfect for income data where a few billionaires would skew the average.</p>
+            </div>
+          </div>
+          <p><strong style="color:var(--text)">Example:</strong> If incomes are [30K, 35K, 40K, 45K, 200K] and one is missing, the mean is 70K (inflated by 200K). The median is 40K — far more representative.</p>
+        </div>
+        <div class="tab-pane">
+          <div class="callout callout-info">
+            <div class="callout-icon">📊</div>
+            <div class="callout-body">
+              <strong>Used for: Missing credit utilization records</strong>
+              <p>Uses a statistical model to predict the missing value based on other available columns. Since credit utilization correlates with debt balance and income, those can be used to estimate it.</p>
+            </div>
+          </div>
+          <p><strong style="color:var(--text)">Why preferred:</strong> Credit utilization is a critical risk factor. Simply deleting those records or using an average would lose important predictive signal. Regression preserves the relationship between variables.</p>
+        </div>
+        <div class="tab-pane">
+          <div class="callout callout-warning">
+            <div class="callout-icon">⚗️</div>
+            <div class="callout-body">
+              <strong>Used for: Incomplete payment history records</strong>
+              <p>Generate artificial data that statistically resembles real data, without exposing real customer records. Useful when a large chunk of behavioral data is missing and deletion would hurt the dataset too much.</p>
+            </div>
+          </div>
+          <p><strong style="color:var(--text)">Caution:</strong> Synthetic data must be carefully validated. If it doesn't match real-world distributions, it can introduce bias and create unrealistic patterns that mislead the model.</p>
+        </div>
+        <div class="tab-pane">
+          <div class="callout callout-warning">
+            <div class="callout-icon">🗑️</div>
+            <div class="callout-body">
+              <strong>Last resort: Remove rows with missing data</strong>
+              <p>Only appropriate when a very small percentage of records (typically &lt;5%) have missing values AND the missingness is completely random (MCAR). Otherwise, deletion biases the remaining dataset.</p>
+            </div>
+          </div>
+          <p><strong style="color:var(--text)">Risk:</strong> If you delete all records where income is missing, and those tend to be low-income customers, your model will never learn about that customer segment — a form of selection bias.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Risk Factors -->
+  <div class="concept-block fade-in">
+    <div class="concept-header">
+      <div class="concept-icon" style="background:rgba(251,191,36,0.15)">⚠️</div>
+      <div>
+        <h3>Delinquency Risk Factors Identified</h3>
+        <span>What signals predict that a customer is likely to miss payments?</span>
+      </div>
+    </div>
+    <div class="concept-body">
+      <p>Through EDA, these five financial and behavioral indicators emerged as the strongest predictors of delinquency. The bar lengths represent relative predictive importance:</p>
+      <div id="risk-bars" style="margin-top:1.25rem"></div>
+      <div class="callout callout-info" style="margin-top:1.25rem">
+        <div class="callout-icon">💡</div>
+        <div class="callout-body">
+          <strong>Key insight from Geldium's data</strong>
+          <p>Customers with even <em>one</em> missed payment showed a significantly elevated likelihood of future delinquency. Early intervention at the first sign of trouble — before the account hits 30+ days overdue — dramatically reduces losses.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TASK 2: MODELING -->
+<section class="section" id="task2">
+  <div class="section-header fade-in">
+    <div class="section-tag">Task 02</div>
+    <h2>Predictive Modeling Framework</h2>
+    <p class="section-desc">Using historical customer data to forecast who is likely to become delinquent — and why logistic regression was the right choice.</p>
+  </div>
+
+  <!-- Model Comparison Interactive -->
+  <div class="concept-block fade-in">
+    <div class="concept-header">
+      <div class="concept-icon" style="background:rgba(124,106,245,0.15)">🤖</div>
+      <div>
+        <h3>Comparing the Three Models Considered</h3>
+        <span>Click each model to explore how it works and why it was or wasn't chosen</span>
+      </div>
+    </div>
+    <div class="concept-body">
+      <div class="model-sel">
+        <button class="model-btn active" onclick="showModel(this,'lr')">Logistic Regression ✓ Chosen</button>
+        <button class="model-btn" onclick="showModel(this,'dt')">Decision Trees</button>
+        <button class="model-btn" onclick="showModel(this,'nn')">Neural Networks</button>
+      </div>
+
+      <div class="model-detail show" id="m-lr">
+        <div class="callout callout-success" style="margin-bottom:1rem">
+          <div class="callout-icon">✅</div>
+          <div class="callout-body"><strong>PRIMARY MODEL — Logistic Regression</strong><p>Selected as Geldium's main delinquency prediction model.</p></div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Logistic regression predicts the <em>probability</em> that something belongs to one of two categories. In this case: delinquent (1) or non-delinquent (0). It outputs a number between 0 and 1.</p>
+        <div style="background:var(--bg4);border-radius:var(--r);padding:1.25rem;font-family:var(--font-mono);font-size:13px;margin-bottom:1rem">
+          P(delinquent) = 0.87 → <span style="color:var(--coral)">HIGH RISK</span> → trigger intervention<br>
+          P(delinquent) = 0.12 → <span style="color:var(--green)">LOW RISK</span> → monitor only
+        </div>
+        <div class="feature-grid" style="margin-top:0">
+          <div class="feature-item"><div class="fi-label">Interpretability</div><div class="fi-val" style="color:var(--green)">High</div><p>Every coefficient tells you exactly how much a feature increases risk.</p></div>
+          <div class="feature-item"><div class="fi-label">Regulatory fit</div><div class="fi-val" style="color:var(--green)">Excellent</div><p>Regulators can audit and explain every decision made.</p></div>
+          <div class="feature-item"><div class="fi-label">Accuracy</div><div class="fi-val" style="color:var(--amber)">Good</div><p>Strong on structured financial data. Not as powerful as neural networks on complex patterns.</p></div>
+          <div class="feature-item"><div class="fi-label">Deployment</div><div class="fi-val" style="color:var(--green)">Simple</div><p>Lightweight, fast to run at scale on millions of customers.</p></div>
+        </div>
+      </div>
+
+      <div class="model-detail" id="m-dt">
+        <div class="callout callout-info" style="margin-bottom:1rem">
+          <div class="callout-icon">🌳</div>
+          <div class="callout-body"><strong>SUPPORT MODEL — Decision Trees</strong><p>Used alongside logistic regression to improve explainability.</p></div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">A decision tree asks a series of yes/no questions about a customer to classify them. Think of it like a flowchart that a business analyst could actually draw on a whiteboard.</p>
+        <div style="background:var(--bg4);border-radius:var(--r);padding:1.25rem;font-size:13px;margin-bottom:1rem;color:var(--muted)">
+          <strong style="color:var(--text)">Example decision path:</strong><br><br>
+          Has missed ≥2 payments? <span style="color:var(--amber)">YES</span><br>
+          &nbsp;&nbsp;→ Credit utilization &gt;80%? <span style="color:var(--amber)">YES</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;→ <span style="color:var(--coral)">CLASSIFY: HIGH RISK</span><br><br>
+          Has missed ≥2 payments? <span style="color:var(--amber)">YES</span><br>
+          &nbsp;&nbsp;→ Credit utilization &gt;80%? <span style="color:var(--green)">NO</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;→ <span style="color:var(--amber)">CLASSIFY: MEDIUM RISK</span>
+        </div>
+        <div class="feature-grid" style="margin-top:0">
+          <div class="feature-item"><div class="fi-label">Interpretability</div><div class="fi-val" style="color:var(--green)">Very High</div><p>Visual, easy for non-technical stakeholders to understand.</p></div>
+          <div class="feature-item"><div class="fi-label">Overfitting risk</div><div class="fi-val" style="color:var(--coral)">High</div><p>Can memorize training data and fail on new customers.</p></div>
+        </div>
+      </div>
+
+      <div class="model-detail" id="m-nn">
+        <div class="callout callout-warning" style="margin-bottom:1rem">
+          <div class="callout-icon">⚠️</div>
+          <div class="callout-body"><strong>NOT CHOSEN — Neural Networks</strong><p>Too complex and opaque for regulated financial decisions.</p></div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">Neural networks are inspired by the human brain. They use interconnected layers of nodes to detect extremely complex patterns. Very powerful — but come at a cost.</p>
+        <div class="feature-grid" style="margin-top:0">
+          <div class="feature-item"><div class="fi-label">Accuracy potential</div><div class="fi-val" style="color:var(--green)">Very High</div><p>Can detect subtle behavioral patterns humans might miss.</p></div>
+          <div class="feature-item"><div class="fi-label">Interpretability</div><div class="fi-val" style="color:var(--coral)">Very Low</div><p>"Black box" — you can't explain WHY it made a decision.</p></div>
+          <div class="feature-item"><div class="fi-label">Regulatory fit</div><div class="fi-val" style="color:var(--coral)">Poor</div><p>ECOA, GDPR require explainability. "The algorithm decided" isn't acceptable.</p></div>
+          <div class="feature-item"><div class="fi-label">Data needed</div><div class="fi-val" style="color:var(--amber)">Massive</div><p>Needs enormous datasets to train effectively — may not suit Geldium's scale.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Evaluation Metrics -->
+  <div class="concept-block fade-in">
+    <div class="concept-header">
+      <div class="concept-icon" style="background:rgba(74,222,128,0.15)">📏</div>
+      <div>
+        <h3>How Do You Know If Your Model Is Good?</h3>
+        <span>The 6 evaluation metrics used for Geldium's delinquency model</span>
+      </div>
+    </div>
+    <div class="concept-body">
+      <p>You can't just use "accuracy" — that's dangerously misleading. If 95% of customers are non-delinquent, a model that always says "not delinquent" has 95% accuracy but is completely useless. Here's what actually matters:</p>
+
+      <div class="metrics-row" style="margin-top:1.25rem">
+        <div class="metric-card">
+          <span class="mk-val" style="color:var(--teal)">Accuracy</span>
+          <div class="mk-label">Overall correct predictions</div>
+          <p style="font-size:11px;color:var(--dim);margin-top:8px">Of all predictions, how many were right?</p>
+        </div>
+        <div class="metric-card" style="border-color:rgba(251,191,36,0.3)">
+          <span class="mk-val" style="color:var(--amber)">Precision</span>
+          <div class="mk-label">Of flagged cases, how many are real?</div>
+          <p style="font-size:11px;color:var(--dim);margin-top:8px">Reduces false alarms. Important for customer trust.</p>
+        </div>
+        <div class="metric-card" style="border-color:rgba(248,113,113,0.3)">
+          <span class="mk-val" style="color:var(--coral)">Recall ★</span>
+          <div class="mk-label">Of real risks, how many caught?</div>
+          <p style="font-size:11px;color:var(--dim);margin-top:8px">Most critical! Missing a true risk = financial loss.</p>
+        </div>
+        <div class="metric-card">
+          <span class="mk-val" style="color:var(--accent2)">F1 Score</span>
+          <div class="mk-label">Balance of precision + recall</div>
+          <p style="font-size:11px;color:var(--dim);margin-top:8px">Harmonic mean — only high when both are good.</p>
+        </div>
+        <div class="metric-card">
+          <span class="mk-val" style="color:var(--blue)">ROC-AUC</span>
+          <div class="mk-label">How well model separates classes</div>
+          <p style="font-size:11px;color:var(--dim);margin-top:8px">1.0 = perfect. 0.5 = random guessing.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-warning" style="margin-top:1.25rem">
+        <div class="callout-icon">🎯</div>
+        <div class="callout-body">
+          <strong>Why Recall is the most important metric here</strong>
+          <p>In delinquency prediction, a <span data-tip="False Negative = model says 'safe' but customer was actually risky">false negative</span> (missing a risky customer) is far more costly than a <span data-tip="False Positive = model says 'risky' but customer was actually fine">false positive</span> (flagging a safe customer). A missed delinquent costs the bank real money. A false alarm just means an unnecessary outreach call. Maximize recall.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Workflow -->
+  <div class="concept-block fade-in">
+    <div class="concept-header">
+      <div class="concept-icon" style="background:rgba(45,212,191,0.15)">⚙️</div>
+      <div>
+        <h3>End-to-End Modeling Workflow</h3>
+        <span>The 8-step process used to build Geldium's delinquency model</span>
+      </div>
+    </div>
+    <div class="concept-body">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-tag">Step 01</div>
+          <h4>Collect & Preprocess Data</h4>
+          <p>Gather all customer financial records. Clean duplicates, standardize formats, handle encoding inconsistencies. The foundation of everything else.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-tag">Step 02</div>
+          <h4>Handle Missing Values</h4>
+          <p>Apply median imputation for income, regression imputation for credit utilization, synthetic generation for missing payment history records.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-tag">Step 03</div>
+          <h4>Feature Selection</h4>
+          <p>Choose the most predictive variables: payment history, credit utilization, DTI ratio, outstanding balance, recent credit activity. Remove redundant or biased features.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-tag">Step 04</div>
+          <h4>Train / Test Split</h4>
+          <p>Split the dataset (typically 80% training, 20% testing). The model never sees test data during training — this ensures honest evaluation of real-world performance.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-tag">Step 05</div>
+          <h4>Train the Model</h4>
+          <p>Feed the logistic regression model historical customer behavior. It learns the statistical relationship between each feature and delinquency outcomes.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-tag">Step 06</div>
+          <h4>Generate Probability Scores</h4>
+          <p>The trained model outputs a risk score (0–1) for every customer. Scores above a defined threshold (e.g., 0.65) are classified as high-risk.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-tag">Step 07</div>
+          <h4>Evaluate Performance</h4>
+          <p>Calculate accuracy, precision, recall, F1, ROC-AUC. Analyze the confusion matrix to understand where errors cluster. Prioritize recall over precision.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-tag">Step 08</div>
+          <h4>Fairness & Bias Audit</h4>
+          <p>Review predictions across demographic groups. Check for proxy bias (e.g., ZIP code correlating with race). Apply SHAP to explain individual decisions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TASK 3: BUSINESS -->
+<section class="section" id="task3">
+  <div class="section-header fade-in">
+    <div class="section-tag">Task 03</div>
+    <h2>Business Recommendation Report</h2>
+    <p class="section-desc">Translating AI model insights into clear, actionable business strategies that non-technical stakeholders can understand and act on.</p>
+  </div>
+
+  <!-- SMART Framework -->
+  <div class="concept-block fade-in">
+    <div class="concept-header">
+      <div class="concept-icon" style="background:rgba(251,191,36,0.15)">🎯</div>
+      <div>
+        <h3>The SMART Recommendation Framework</h3>
+        <span>How to turn a vague AI insight into a specific business action</span>
+      </div>
+    </div>
+    <div class="concept-body">
+      <p>Executives don't want to hear "the model found some patterns." They want to know: what do we do, by when, and what's the expected outcome? SMART recommendations answer all of that.</p>
+
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;margin:1.25rem 0">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--dim);margin-bottom:0.75rem">Geldium's Actual SMART Recommendation</div>
+        <p style="font-size:1rem;color:var(--text);line-height:1.7;font-style:italic">"Launch a <strong style="color:var(--amber)">6-week</strong> proactive <strong style="color:var(--teal)">SMS and email outreach</strong> program targeting customers with <strong style="color:var(--coral)">high credit utilization and multiple missed payments</strong>, with the goal of <strong style="color:var(--green)">reducing 30+ day delinquency rates by 10%</strong>."</p>
+      </div>
+
+      <div class="compare-grid" style="margin-top:0">
+        <div class="compare-card"><div class="cc-label">S</div><h4>Specific</h4><p style="font-size:13px;color:var(--muted)">SMS + email outreach. Not just "contact customers" — exactly which channel, targeting exactly which segment (high utilization + missed payments).</p></div>
+        <div class="compare-card"><div class="cc-label">M</div><h4>Measurable</h4><p style="font-size:13px;color:var(--muted)">Reduce 30+ day delinquency by 10%. A concrete number you can track before and after.</p></div>
+        <div class="compare-card"><div class="cc-label">A</div><h4>Actionable</h4><p style="font-size:13px;color:var(--muted)">SMS and email campaigns are something the collections team can realistically execute with existing infrastructure.</p></div>
+        <div class="compare-card"><div class="cc-label">R</div><h4>Relevant</h4><p style="font-size:13px;color:var(--muted)">Directly tied to Geldium's core business objective: reduce financial losses from delinquencies.</p></div>
+        <div class="compare-card"><div class="cc-label">T</div><h4>Time-Bound</h4><p style="font-size:13px;color:var(--muted)">6 weeks. A defined window creates urgency and allows for proper before/after comparison.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Translating AI to Business -->
+  <div class="concept-block fade-in">
+    <div class="concept-header">
+      <div class="concept-icon" style="background:rgba(96,165,250,0.15)">💼</div>
+      <div>
+        <h3>Translating Technical AI → Business Language</h3>
+        <span>The most underrated skill in data science: communication</span>
+      </div>
+    </div>
+    <div class="concept-body">
+      <div class="tab-group">
+        <div class="tab-nav">
+          <button class="tab-btn active" onclick="switchTab(this,'comm')">Technical Version</button>
+          <button class="tab-btn" onclick="switchTab(this,'comm')">Business Version</button>
+        </div>
+        <div class="tab-pane active">
+          <div style="background:var(--bg4);border-radius:var(--r);padding:1.25rem;font-family:var(--font-mono);font-size:13px;color:var(--muted)">
+            "The logistic regression classifier with L2 regularization achieved an ROC-AUC of 0.82 on the holdout set, with precision 0.71 and recall 0.86 at the 0.55 probability threshold. SHAP feature importance analysis indicates that payment_history_lag_30 (SHAP = +0.43) and credit_utilization_ratio (SHAP = +0.31) are the top two contributing features across the positive class."
+          </div>
+          <div class="callout callout-warning" style="margin-top:1rem">
+            <div class="callout-icon">❌</div>
+            <div class="callout-body"><strong>Problem with this version</strong><p>A Head of Collections cannot act on this. They don't know what ROC-AUC means and they shouldn't need to.</p></div>
+          </div>
+        </div>
+        <div class="tab-pane">
+          <div style="background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.2);border-radius:var(--r);padding:1.25rem;font-size:14px;line-height:1.75;color:var(--text)">
+            "Our analysis identified that customers who have missed two or more payments AND are using more than 80% of their credit limit are 4.3× more likely to fall 30+ days overdue in the next 60 days. These 2,400 customers represent your highest priority for proactive outreach. Reaching out this week — before they miss another payment — could prevent an estimated £180K in collection costs."
+          </div>
+          <div class="callout callout-success" style="margin-top:1rem">
+            <div class="callout-icon">✅</div>
+            <div class="callout-body"><strong>Why this works</strong><p>Specific customer count. Clear financial impact. Actionable timing. No jargon. The executive can forward this directly to their team.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TASK 4: AGENTIC AI -->
+<section class="section" id="task4">
+  <div class="section-header fade-in">
+    <div class="section-tag">Task 04</div>
+    <h2>Agentic AI Collections System</h2>
+    <p class="section-desc">Moving beyond prediction into autonomous action — an AI that doesn't just flag risks, but actively manages them with human oversight.</p>
+  </div>
+
+  <!-- Rule-Based vs Agentic -->
+  <div class="concept-block fade-in">
+    <div class="concept-header">
+      <div class="concept-icon" style="background:rgba(248,113,113,0.15)">⚡</div>
+      <div>
+        <h3>Rule-Based Automation vs Agentic AI</h3>
+        <span>The fundamental difference that changes what's possible</span>
+      </div>
+    </div>
+    <div class="concept-body">
+      <div class="compare-grid" style="grid-template-columns:1fr 1fr">
+        <div class="compare-card">
+          <div class="cc-label">Traditional</div>
+          <h4>Rule-Based System</h4>
+          <div style="background:var(--bg4);border-radius:8px;padding:1rem;font-family:var(--font-mono);font-size:12px;margin:0.75rem 0;color:var(--muted)">
+            IF missed_payment = TRUE<br>
+            THEN send_reminder(7_days)<br><br>
+            IF missed_payment = 2<br>
+            THEN escalate_to_agent()<br><br>
+            <span style="color:var(--dim)">// No adaptation. Ever.</span>
+          </div>
+          <ul class="compare-list">
+            <li>Rigid, pre-programmed logic</li>
+            <li>Same response regardless of context</li>
+            <li>Can't learn from outcomes</li>
+            <li>Doesn't personalize</li>
+          </ul>
+        </div>
+        <div class="compare-card highlight">
+          <div class="cc-badge">Geldium's Proposed System</div>
+          <div class="cc-label">Next Generation</div>
+          <h4>Agentic AI System</h4>
+          <div style="background:rgba(124,106,245,0.05);border:1px solid rgba(124,106,245,0.15);border-radius:8px;padding:1rem;font-size:12px;margin:0.75rem 0;color:var(--muted)">
+            <strong style="color:var(--text)">Observes:</strong> Customer just changed jobs + income dropped<br><br>
+            <strong style="color:var(--text)">Reasons:</strong> High financial stress signal<br><br>
+            <strong style="color:var(--text)">Acts:</strong> Offer payment plan proactively, not a reminder<br><br>
+            <strong style="color:var(--text)">Learns:</strong> Customer accepted → update strategy
+          </div>
+          <ul class="compare-list">
+            <li>Adapts to customer behavior</li>
+            <li>Personalizes every interaction</li>
+            <li>Improves from outcomes</li>
+            <li>Optimizes in real-time</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4-Component Architecture -->
+  <div class="concept-block fade-in">
+    <div class="concept-header">
+      <div class="concept-icon" style="background:rgba(45,212,191,0.15)">🏗️</div>
+      <div>
+        <h3>The Four-Layer Architecture</h3>
+        <span>How data flows through Geldium's autonomous collections system</span>
+      </div>
+    </div>
+    <div class="concept-body">
+      <div class="agentic-flow">
+        <div class="af-step">
+          <div class="af-icon" style="background:rgba(96,165,250,0.15)">📥</div>
+          <div class="af-content">
+            <h4>Layer 1 · Data Pipeline</h4>
+            <p>Continuously ingests customer data: payment history, credit utilization, transaction behavior, real-time repayment activity. Raw data → structured features. This layer never stops running — new data arrives every hour, updating risk scores in real-time.</p>
+            <div class="pill-group"><span class="pill pill-blue">Payment history</span><span class="pill pill-blue">Credit utilization</span><span class="pill pill-blue">Transaction behavior</span><span class="pill pill-blue">Real-time activity</span></div>
+          </div>
+        </div>
+        <div class="af-step">
+          <div class="af-icon" style="background:rgba(124,106,245,0.15)">🧠</div>
+          <div class="af-content">
+            <h4>Layer 2 · Decision Engine</h4>
+            <p>The brain. Uses the trained logistic regression model + business rules to assign each customer a risk tier (Low / Medium / High / Critical) and select the appropriate intervention strategy. The engine considers both the model's probability score and business context (e.g., don't contact customers who've requested no contact).</p>
+            <div class="pill-group"><span class="pill pill-purple">Risk scoring</span><span class="pill pill-purple">Customer segmentation</span><span class="pill pill-purple">Intervention selection</span></div>
+          </div>
+        </div>
+        <div class="af-step">
+          <div class="af-icon" style="background:rgba(251,191,36,0.15)">📤</div>
+          <div class="af-content">
+            <h4>Layer 3 · Action Layer</h4>
+            <p>Executes the decision automatically. Low risk → no action. Medium risk → automated SMS reminder. High risk → email with payment assistance offer. Critical risk → escalate to human agent. Actions are personalized: timing, channel, and message vary by customer preference and behavior history.</p>
+            <div class="pill-group"><span class="pill pill-amber">SMS reminders</span><span class="pill pill-amber">Email offers</span><span class="pill pill-amber">Payment plans</span><span class="pill pill-amber">Agent escalation</span></div>
+          </div>
+        </div>
+        <div class="af-step">
+          <div class="af-icon" style="background:rgba(74,222,128,0.15)">🔄</div>
+          <div class="af-content">
+            <h4>Layer 4 · Learning Loop</h4>
+            <p>This is what makes it agentic. After every intervention, the system observes the outcome: Did the customer make a payment? Did they respond to the SMS? Did the payment plan work? These outcomes feed back into the model, improving future decisions. The system gets smarter every week.</p>
+            <div class="pill-group"><span class="pill pill-green">Outcome tracking</span><span class="pill pill-green">Model retraining</span><span class="pill pill-green">Strategy optimization</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Human in the Loop -->
+  <div class="concept-block fade-in">
+    <div class="concept-header">
+      <div class="concept-icon" style="background:rgba(248,113,113,0.15)">👤</div>
+      <div>
+        <h3>Human-in-the-Loop: Why AI Can't Do It All</h3>
+        <span>Where human judgment is non-negotiable</span>
+      </div>
+    </div>
+    <div class="concept-body">
+      <p>Even the most sophisticated AI system must have humans in the loop for certain decisions. This isn't a limitation — it's a feature of responsible design.</p>
+      <div class="arch-grid">
+        <div class="arch-layer">
+          <h4><span class="arch-dot" style="background:var(--accent2)"></span>AI Handles Autonomously</h4>
+          <ul>
+            <li>Scoring millions of customers in real-time</li>
+            <li>Sending automated reminders and notifications</li>
+            <li>Prioritizing collections agent queues</li>
+            <li>Generating risk reports and dashboards</li>
+            <li>Routine payment plan offers</li>
+            <li>Monitoring repayment behavior</li>
+          </ul>
+        </div>
+        <div class="arch-layer" style="border-color:rgba(248,113,113,0.2)">
+          <h4><span class="arch-dot" style="background:var(--coral)"></span>Humans Must Decide</h4>
+          <ul>
+            <li>Customer disputes about their account</li>
+            <li>Escalated hardship cases</li>
+            <li>Decisions with legal implications</li>
+            <li>Fairness and bias reviews</li>
+            <li>Regulatory compliance sign-off</li>
+            <li>Sensitive customer situations</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout callout-info" style="margin-top:1.25rem">
+        <div class="callout-icon">⚖️</div>
+        <div class="callout-body">
+          <strong>The principle: AI amplifies humans, not replaces them</strong>
+          <p>A collections agent who previously managed 50 accounts manually can now manage 500 high-complexity cases — because the AI handles the 10,000 routine ones. Human expertise is applied where it matters most.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ETHICS -->
+<section class="section" id="ethics">
+  <div class="section-header fade-in">
+    <div class="section-tag">Responsible AI</div>
+    <h2>Ethics, Fairness & Regulations</h2>
+    <p class="section-desc">An AI model that's accurate but unfair is not a success. Responsible AI requires deliberate design choices and ongoing monitoring.</p>
+  </div>
+
+  <!-- Bias Types -->
+  <div class="concept-block fade-in">
+    <div class="concept-header">
+      <div class="concept-icon" style="background:rgba(248,113,113,0.15)">⚖️</div>
+      <div>
+        <h3>Three Types of AI Bias in Financial Services</h3>
+        <span>Understanding how discrimination creeps into models — even unintentionally</span>
+      </div>
+    </div>
+    <div class="concept-body">
+      <div class="ethics-grid">
+        <div class="eth-cell" style="background:var(--bg2);padding:0.75rem;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--dim)">Bias Type</div>
+        <div class="eth-cell" style="background:var(--bg2);padding:0.75rem;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--dim)">How It Enters + Real Example</div>
+        <div class="eth-cell">
+          <div class="ec-risk">Historical Bias</div>
+          <p style="font-size:12px;color:var(--muted)">Pattern inherited from past</p>
+        </div>
+        <div class="eth-cell">
+          <p>If historical loan decisions unfairly denied credit to certain communities, the AI learns "these groups → high risk" — not because they're risky, but because past decisions were discriminatory. The model perpetuates old injustice.</p>
+        </div>
+        <div class="eth-cell">
+          <div class="ec-risk">Selection Bias</div>
+          <p style="font-size:12px;color:var(--muted)">Unrepresentative training data</p>
+        </div>
+        <div class="eth-cell">
+          <p>If Geldium's historical data skews toward urban customers, the model may perform poorly on rural customers it has little data about — not because they're riskier, but because they're underrepresented in training.</p>
+        </div>
+        <div class="eth-cell">
+          <div class="ec-risk">Proxy Bias</div>
+          <p style="font-size:12px;color:var(--muted)">Indirect demographic signals</p>
+        </div>
+        <div class="eth-cell">
+          <p>ZIP code seems like a neutral financial feature. But ZIP code correlates strongly with race and income due to historical housing segregation. Using ZIP code as a feature can lead to indirect racial discrimination — even if race is never in the dataset.</p>
+        </div>
+      </div>
+
+      <!-- Bias Meter Interactive -->
+      <div class="bias-meter" style="margin-top:1.25rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+          <span style="font-size:13px;font-weight:600">Simulate model bias level</span>
+          <span id="bias-label" style="font-family:var(--font-mono);font-size:12px;color:var(--muted)">Low bias</span>
+        </div>
+        <div class="bm-track"><div class="bm-needle" id="bm-needle" style="left:15%"></div></div>
+        <div class="bm-labels"><span>Fair</span><span>Moderate</span><span>Severely Biased</span></div>
+        <input type="range" min="0" max="100" value="15" style="width:100%;margin-top:0.75rem" oninput="updateBias(this.value)">
+        <div id="bias-consequence" style="margin-top:1rem;font-size:13px;color:var(--muted);background:var(--bg4);border-radius:8px;padding:1rem;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHAP Explainability -->
+  <div class="concept-block fade-in">
+    <div class="concept-header">
+      <div class="concept-icon" style="background:rgba(45,212,191,0.15)">🔎</div>
+      <div>
+        <h3>SHAP — Making the "Black Box" Transparent</h3>
+        <span>How to explain any AI prediction to any stakeholder</span>
+      </div>
+    </div>
+    <div class="concept-body">
+      <p>SHAP (Shapley Additive Explanations) answers: "Why did the model give this specific customer a 0.87 risk score?" It shows how much each feature pushed the prediction up or down.</p>
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;margin:1.25rem 0">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);margin-bottom:1rem">Example SHAP output for Customer #4821 (Risk score: 0.87)</div>
+        <div id="shap-bars"></div>
+        <p style="font-size:12px;color:var(--dim);margin-top:1rem">← decreases risk &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; increases risk →</p>
+      </div>
+      <div class="callout callout-success">
+        <div class="callout-icon">💡</div>
+        <div class="callout-body">
+          <strong>Why SHAP matters for Geldium</strong>
+          <p>If a customer disputes their high-risk classification, the collections team can explain: "Our system flagged you primarily because of two missed payments in the last 90 days and 87% credit utilization — not because of any demographic factor." That's legally defensible and builds customer trust.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Regulations -->
+  <div class="concept-block fade-in">
+    <div class="concept-header">
+      <div class="concept-icon" style="background:rgba(251,191,36,0.15)">📜</div>
+      <div>
+        <h3>The Four Regulations Governing Geldium's AI</h3>
+        <span>Compliance isn't optional — these laws define the boundaries of what the AI can and cannot do</span>
+      </div>
+    </div>
+    <div class="concept-body">
+      <div class="reg-grid">
+        <div class="reg-card">
+          <div class="reg-acronym" style="color:var(--coral)">ECOA</div>
+          <div class="reg-full">Equal Credit Opportunity Act</div>
+          <p>Prohibits discrimination in credit decisions based on race, gender, religion, national origin, or age. Any AI model must prove its decisions are not correlated with protected characteristics.</p>
+        </div>
+        <div class="reg-card">
+          <div class="reg-acronym" style="color:var(--blue)">GDPR</div>
+          <div class="reg-full">General Data Protection Regulation</div>
+          <p>EU regulation requiring: data minimization, right to explanation, customer consent. If a customer asks "why was I denied?", the AI must be able to explain in plain terms. Automated decisions require human oversight.</p>
+        </div>
+        <div class="reg-card">
+          <div class="reg-acronym" style="color:var(--teal)">FCA</div>
+          <div class="reg-full">Financial Conduct Authority</div>
+          <p>UK regulator requiring fair treatment of customers. Collections practices must be proportionate, non-harassing, and consider vulnerable customers. AI must have overrides for edge cases.</p>
+        </div>
+        <div class="reg-card">
+          <div class="reg-acronym" style="color:var(--amber)">FCRA</div>
+          <div class="reg-full">Fair Credit Reporting Act</div>
+          <p>Governs how credit information is collected, used, and shared. Customers have the right to dispute inaccurate information. AI systems using credit data must follow strict protocols for data accuracy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- QUIZ -->
+<section class="section" id="quiz">
+  <div class="section-header fade-in">
+    <div class="section-tag">Test Your Knowledge</div>
+    <h2>Quick-Fire Quiz</h2>
+    <p class="section-desc">10 questions across all four tasks. See how much you've absorbed from this simulation.</p>
+  </div>
+
+  <div class="quiz-block fade-in" id="quiz-container">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent2)">Knowledge Check</div>
+      <div class="quiz-prog" id="quiz-prog">Question 1 of 10</div>
+    </div>
+    <div class="quiz-q" id="quiz-q"></div>
+    <div class="quiz-options" id="quiz-opts"></div>
+    <div class="quiz-feedback" id="quiz-fb"></div>
+    <div class="quiz-nav">
+      <button class="btn btn-ghost" id="quiz-prev" onclick="quizNav(-1)" disabled>← Previous</button>
+      <div id="quiz-score" style="font-family:var(--font-mono);font-size:13px;color:var(--muted)"></div>
+      <button class="btn btn-primary" id="quiz-next" onclick="quizNav(1)">Next →</button>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div style="font-family:var(--font-head);font-size:1.2rem;font-weight:800;margin-bottom:0.75rem;background:linear-gradient(135deg,var(--accent2),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Tata iQ · AI Financial Analytics</div>
+    <p>Created by <strong>Sanka Satyanarayana</strong> · Geldium Delinquency Risk Assessment Project</p>
+    <p style="margin-top:0.5rem">Built to share knowledge from the <a href="https://www.theforage.com/simulations/tata/data-visualisation-p5xo" target="_blank">Tata iQ Virtual Simulation on Forage</a>.</p>
+    <p style="margin-top:1.5rem;font-size:11px">Concepts covered: EDA · Missing Data Imputation · Logistic Regression · Decision Trees · Neural Networks · Model Evaluation · SHAP · Agentic AI · ECOA · GDPR · FCA · FCRA · SMART Recommendations · Human-in-the-Loop · Synthetic Data</p>
+  </div>
+</footer>
+
+<script>
+// ── PROGRESS BAR ──
+window.addEventListener('scroll', () => {
+  const el = document.getElementById('progBar');
+  const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  el.style.width = pct + '%';
+});
+
+// ── FADE IN ON SCROLL ──
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// ── TABS ──
+function switchTab(btn, group) {
+  const nav = btn.closest('.tab-nav');
+  const panes = nav.nextElementSibling ? nav.parentElement.querySelectorAll('.tab-pane') : [];
+  nav.querySelectorAll('.tab-btn').forEach((b,i) => {
+    b.classList.toggle('active', b === btn);
+    const pane = nav.parentElement.querySelectorAll('.tab-pane')[i];
+    if(pane) pane.classList.toggle('active', b === btn);
+  });
+}
+
+// ── MISSING DATA VIS ──
+const missingVis = document.getElementById('missing-vis');
+function setMissing(rate) {
+  const total = 200;
+  missingVis.innerHTML = '';
+  let missing = 0;
+  for(let i = 0; i < total; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'mv-cell';
+    const isMissing = Math.random() < rate;
+    if(isMissing) { cell.classList.add('missing'); missing++; }
+    else cell.classList.add('filled');
+    missingVis.appendChild(cell);
+  }
+  document.getElementById('missing-label').textContent = `${missing} of ${total} records have missing values (${Math.round(missing/total*100)}%)`;
+}
+setMissing(0.08);
+
+// ── RISK BARS ──
+const risks = [
+  { label: 'Repeated late payments', pct: 92, color: 'var(--coral)' },
+  { label: 'High credit utilization (>80%)', pct: 78, color: 'var(--amber)' },
+  { label: 'High debt-to-income ratio', pct: 71, color: 'var(--amber)' },
+  { label: 'Sudden increase in credit activity', pct: 58, color: 'var(--accent2)' },
+  { label: 'Unstable income / employment', pct: 51, color: 'var(--teal)' },
+];
+const rbContainer = document.getElementById('risk-bars');
+risks.forEach(r => {
+  rbContainer.innerHTML += `
+    <div class="risk-bar-item">
+      <div class="risk-bar-header">
+        <span class="risk-bar-label">${r.label}</span>
+        <span class="risk-bar-pct">${r.pct}%</span>
+      </div>
+      <div class="risk-bar-track">
+        <div class="risk-bar-fill" style="width:0%;background:${r.color}" data-target="${r.pct}"></div>
+      </div>
+    </div>`;
+});
+setTimeout(() => {
+  document.querySelectorAll('.risk-bar-fill').forEach(el => {
+    el.style.width = el.dataset.target + '%';
+  });
+}, 400);
+
+// ── MODEL SWITCHER ──
+function showModel(btn, id) {
+  document.querySelectorAll('.model-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.model-detail').forEach(d => d.classList.remove('show'));
+  btn.classList.add('active');
+  document.getElementById('m-' + id).classList.add('show');
+}
+
+// ── BIAS METER ──
+function updateBias(val) {
+  const needle = document.getElementById('bm-needle');
+  const label = document.getElementById('bias-label');
+  const consequence = document.getElementById('bias-consequence');
+  needle.style.left = val + '%';
+  const v = parseInt(val);
+  if(v < 25) {
+    label.textContent = 'Low bias';
+    consequence.textContent = '✅ Model performs fairly across all demographic groups. Minority customers receive similar treatment to majority customers with equivalent financial profiles. Passes regulatory audit.';
+    consequence.style.color = 'var(--green)';
+  } else if(v < 60) {
+    label.textContent = 'Moderate bias';
+    consequence.textContent = '⚠️ Some demographic groups are over-flagged as high-risk despite similar financial profiles. Disproportionate impact detected in specific ZIP codes. Model needs fairness retraining before deployment.';
+    consequence.style.color = 'var(--amber)';
+  } else {
+    label.textContent = 'Severe bias';
+    consequence.textContent = '❌ Model systematically disadvantages protected groups. Would violate ECOA and FCA standards. Cannot be deployed. Collections team faces regulatory action risk. Must rebuild from scratch with bias-aware training techniques.';
+    consequence.style.color = 'var(--coral)';
+  }
+}
+updateBias(15);
+
+// ── SHAP BARS ──
+const shapData = [
+  { feature: 'Missed payments (×3 in 90 days)', val: 0.43, dir: 1 },
+  { feature: 'Credit utilization (87%)', val: 0.31, dir: 1 },
+  { feature: 'Outstanding balance (rising)', val: 0.18, dir: 1 },
+  { feature: 'Debt-to-income ratio (0.62)', val: 0.12, dir: 1 },
+  { feature: 'Account age (7 years)', val: 0.09, dir: -1 },
+  { feature: 'Previously paid on time (12mo)', val: 0.06, dir: -1 },
+];
+const shapContainer = document.getElementById('shap-bars');
+shapData.forEach(s => {
+  const color = s.dir === 1 ? 'var(--coral)' : 'var(--teal)';
+  const label = s.dir === 1 ? `+${s.val} risk` : `-${s.val} risk`;
+  shapContainer.innerHTML += `
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+      <div style="width:200px;font-size:12px;color:var(--muted);flex-shrink:0;text-align:right">${s.feature}</div>
+      <div style="flex:1;background:var(--bg4);border-radius:4px;height:20px;position:relative">
+        <div style="position:absolute;${s.dir===1?'left':'right'}:0;width:${Math.round(s.val*200)}px;max-width:100%;height:100%;background:${color};opacity:0.7;border-radius:4px"></div>
+        <span style="position:absolute;${s.dir===1?'left:6px':'right:6px'};top:50%;transform:translateY(-50%);font-family:var(--font-mono);font-size:11px;color:var(--text)">${label}</span>
+      </div>
+    </div>`;
+});
+
+// ── QUIZ ──
+const questions = [
+  { q: "What does EDA stand for and what is its main purpose?", opts: ["Exploratory Data Analysis — understanding the dataset before modeling","Estimated Data Accuracy — measuring prediction correctness","Extended Decision Algorithm — choosing which model to use","External Data Acquisition — gathering data from third parties"], ans: 0, exp: "EDA stands for Exploratory Data Analysis. It's the crucial first step of understanding your dataset's structure, quality, and patterns before building any predictive model. Poor EDA leads to poor models." },
+  { q: "Why is median imputation preferred over mean imputation for income data?", opts: ["Median is faster to compute","Median is resistant to outliers — one billionaire won't skew the result","Mean is not allowed in financial services","Median always equals the most common value"], ans: 1, exp: "Income data often has extreme outliers (very high earners). The mean gets pulled toward these outliers, giving an unrealistically high 'average'. The median (middle value) is unaffected by extreme values and gives a more representative estimate." },
+  { q: "A model correctly identifies 45 out of 50 actual delinquent customers. Which metric does this describe?", opts: ["Precision","Accuracy","Recall","F1 Score"], ans: 2, exp: "Recall = (True Positives) / (True Positives + False Negatives) = 45/50 = 90%. Recall measures how many of the ACTUAL delinquent customers the model correctly caught. This is the most critical metric for Geldium — missing a risky customer has real financial cost." },
+  { q: "Why was logistic regression chosen over neural networks for Geldium?", opts: ["Neural networks are too expensive","Logistic regression is newer technology","Logistic regression is transparent and explainable — required by financial regulations","Neural networks cannot handle binary classification"], ans: 2, exp: "Financial regulations (ECOA, GDPR, FCA) require that AI decisions be explainable. Logistic regression shows exactly how much each feature contributed to the risk score. Neural networks are 'black boxes' — they can't explain their decisions, making them legally risky in financial services." },
+  { q: "What is 'proxy bias' in an AI model?", opts: ["When the model is too slow to run in real-time","When a neutral-seeming variable indirectly encodes demographic information","When historical data has too many missing values","When the model memorizes training data"], ans: 1, exp: "Proxy bias occurs when a variable that seems neutral actually correlates with a protected characteristic. ZIP code looks like a financial indicator, but correlates with race due to historical housing segregation. Using it in credit decisions can constitute indirect discrimination even if race is never in the dataset." },
+  { q: "What does MNAR mean in the context of missing data?", opts: ["Multiple Nested Anomaly Recognition","Missing Not At Random — the fact something is missing carries information itself","Most Neutral Adjustment Ratio","Missing Near Automated Replacement"], ans: 1, exp: "MNAR (Missing Not At Random) is the most problematic type of missingness. The reason something is missing IS the signal. For example, customers in severe financial distress may intentionally not report their debt levels. The absence of that data tells you something important about their financial situation." },
+  { q: "What does the Learning Loop in Geldium's AI collections system do?", opts: ["It loops through customer records alphabetically","It continuously monitors outcomes and improves future AI decisions","It prevents the system from making the same error twice","It loops emails to customers until they respond"], ans: 1, exp: "The Learning Loop (also called a feedback loop) observes what happens after each intervention: Did the customer pay? Did they engage with the SMS? Did the payment plan work? These outcomes are fed back to improve the model's future predictions and intervention selections. This is what makes the system 'agentic'." },
+  { q: "Which regulation gives EU customers the right to an explanation of automated decisions affecting them?", opts: ["ECOA","FCRA","FCA","GDPR"], ans: 3, exp: "GDPR (General Data Protection Regulation) includes the 'right to explanation' — customers affected by automated decisions (like being classified as high credit risk) have the right to understand why. This is why explainable AI is legally required in Europe, not just a nice-to-have." },
+  { q: "What does SHAP do in the context of Geldium's AI model?", opts: ["It measures how fast the model runs","It explains how much each feature contributed to a specific prediction","It removes biased features from the training data","It generates synthetic data to fill missing values"], ans: 1, exp: "SHAP (Shapley Additive Explanations) is an explainability tool that shows, for any individual prediction, how much each feature pushed the risk score up or down. For Customer #4821 with a 0.87 risk score, SHAP might show: 'missed payments contributed +0.43, high credit utilization contributed +0.31'." },
+  { q: "A SMART business recommendation must be all of the following EXCEPT:", opts: ["Specific","Measurable","Automated","Time-bound"], ans: 2, exp: "SMART stands for: Specific, Measurable, Actionable, Relevant, and Time-bound. 'Automated' is NOT part of SMART. The SMART framework is about how you frame a business recommendation — it doesn't specify the delivery mechanism. A recommendation can be manual and still be SMART." },
+];
+
+let currentQ = 0;
+let answers = new Array(questions.length).fill(null);
+let score = 0;
+
+function renderQuiz() {
+  const q = questions[currentQ];
+  document.getElementById('quiz-prog').textContent = `Question ${currentQ+1} of ${questions.length}`;
+  document.getElementById('quiz-q').textContent = q.q;
+  const opts = document.getElementById('quiz-opts');
+  opts.innerHTML = '';
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-opt';
+    btn.textContent = opt;
+    if(answers[currentQ] !== null) {
+      if(i === q.ans) btn.classList.add('correct');
+      else if(i === answers[currentQ]) btn.classList.add('wrong');
+      btn.disabled = true;
+    } else {
+      btn.onclick = () => selectAnswer(i);
+    }
+    opts.appendChild(btn);
+  });
+  const fb = document.getElementById('quiz-fb');
+  if(answers[currentQ] !== null) {
+    fb.textContent = (answers[currentQ] === q.ans ? '✅ Correct! ' : '❌ Incorrect. ') + q.exp;
+    fb.classList.add('show');
+  } else {
+    fb.classList.remove('show');
+  }
+  document.getElementById('quiz-prev').disabled = currentQ === 0;
+  document.getElementById('quiz-next').textContent = currentQ === questions.length - 1 ? 'See Results' : 'Next →';
+  const done = answers.filter(a=>a!==null).length;
+  document.getElementById('quiz-score').textContent = done > 0 ? `Score: ${score}/${done}` : '';
+}
+
+function selectAnswer(i) {
+  if(answers[currentQ] !== null) return;
+  const q = questions[currentQ];
+  answers[currentQ] = i;
+  if(i === q.ans) score++;
+  renderQuiz();
+}
+
+function quizNav(dir) {
+  if(dir === 1 && currentQ === questions.length - 1) {
+    showResults();
+    return;
+  }
+  currentQ = Math.max(0, Math.min(questions.length-1, currentQ+dir));
+  renderQuiz();
+}
+
+function showResults() {
+  const pct = Math.round(score/questions.length*100);
+  const msg = pct >= 80 ? '🎉 Excellent! You clearly understood this simulation deeply.' : pct >= 60 ? '👍 Good work! Review the concepts you missed above.' : '📚 Keep learning! Re-read the sections and try again.';
+  document.getElementById('quiz-container').innerHTML = `
+    <div style="text-align:center;padding:2rem 0">
+      <div style="font-family:var(--font-head);font-size:4rem;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0.5rem">${score}/${questions.length}</div>
+      <div style="font-size:1.2rem;font-weight:600;margin-bottom:0.5rem">${pct}% correct</div>
+      <p style="color:var(--muted);margin-bottom:2rem">${msg}</p>
+      <div style="background:var(--bg3);border-radius:var(--r);height:12px;overflow:hidden;margin-bottom:2rem">
+        <div style="height:100%;width:${pct}%;background:linear-gradient(90deg,var(--accent),var(--teal));border-radius:var(--r);transition:width 1s ease"></div>
+      </div>
+      <button class="btn btn-primary" onclick="restartQuiz()">Retake Quiz</button>
+    </div>`;
+  setTimeout(() => {
+    document.querySelector('#quiz-container .btn-primary')?.previousElementSibling?.children[0] && null;
+  }, 100);
+}
+
+function restartQuiz() {
+  currentQ = 0;
+  answers = new Array(questions.length).fill(null);
+  score = 0;
+  document.getElementById('quiz-container').innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent2)">Knowledge Check</div>
+      <div class="quiz-prog" id="quiz-prog"></div>
+    </div>
+    <div class="quiz-q" id="quiz-q"></div>
+    <div class="quiz-options" id="quiz-opts"></div>
+    <div class="quiz-feedback" id="quiz-fb"></div>
+    <div class="quiz-nav">
+      <button class="btn btn-ghost" id="quiz-prev" onclick="quizNav(-1)" disabled>← Previous</button>
+      <div id="quiz-score" style="font-family:var(--font-mono);font-size:13px;color:var(--muted)"></div>
+      <button class="btn btn-primary" id="quiz-next" onclick="quizNav(1)">Next →</button>
+    </div>`;
+  renderQuiz();
+}
+
+renderQuiz();
+</script>
+</body>
+</html>
